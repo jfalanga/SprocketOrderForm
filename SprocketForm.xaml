@@ -44,7 +44,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Column="0" Margin="10">
-                <Button x:Name="BtnSubmit" Content="Submit" HorizontalAlignment="Center" Padding="10 0" Click="BtnSubmit_Click"/>
+                <Button x:Name="BtnSubmit" Content="Submit" HorizontalAlignment="Center" Padding="10 0" Click="BtnSubmit_Click" Height="18" Margin="0,0,0,-0.4" VerticalAlignment="Top"/>
             </DockPanel>
             <DockPanel Grid.Column="1" Margin="10">
                 <Button x:Name="BtnCancel" Content="Cancel" HorizontalAlignment="Center" Padding="10 0" Click="BtnCancel_Click"/>

@@ -19,22 +19,24 @@ namespace SprocketOrderForm
     /// </summary>
     public partial class SprocketForm : Window
     {
-        private Sprocket sprocked;
+        public Sprocket Sprocked;
         string shdBeInt;
-        public SprocketForm() : this(new SteelSprockets())
+
+        
+        public SprocketForm() //: this(new SteelSprockets())
         {
-            
+            InitializeComponent();
         }
 
         public SprocketForm(Sprocket sprocket)
         { 
-            InitializeComponent();
-            sprocked = sprocket;
+            
+            Sprocked = sprocket;
         }
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            Sprocket genericSp;
+            //Sprocket Sprocked;
             if (TxtID.Text == "") TxtID.Text = "0";
             switch (CmbType.Text)
             {
@@ -42,18 +44,18 @@ namespace SprocketOrderForm
                     MessageBox.Show("Please enter something in Item Type");
                     return;
                 case "Steel Sprockets":
-                    genericSp = new SteelSprockets(Int32.Parse(TxtID.Text),0,0);
+                    Sprocked = new SteelSprockets(Int32.Parse(TxtID.Text),0,0);
                     break;
                 case "Plastic Sprockets":
-                    genericSp = new PlasticSprockets(int.Parse(TxtID.Text), 0, 0);
+                    Sprocked = new PlasticSprockets(int.Parse(TxtID.Text), 0, 0);
                     break;
                 case "Aluminum Sprockets":
-                    genericSp = new AluminumSprocket(Int32.Parse(TxtID.Text), 0, 0);
+                    Sprocked = new AluminumSprocket(Int32.Parse(TxtID.Text), 0, 0);
                     break;
                 default:
                     throw new Exception("Combobox for Item Type has unexpected value!");
             }
-            sprocked = genericSp;
+            //this.Sprocked = Sprocked;
             if (TxtNumOfStuff.Text == "")
             {
                 TxtNumOfStuff.Text = "0";
@@ -62,14 +64,15 @@ namespace SprocketOrderForm
             {
                 TxtTeethNum.Text = "0";
             }
-            sprocked.NumItems = Int32.Parse(TxtNumOfStuff.Text);
-            sprocked.NumTeeth = Int32.Parse(TxtTeethNum.Text);
+            this.Sprocked.NumItems = int.Parse(TxtNumOfStuff.Text);
+            this.Sprocked.NumTeeth = int.Parse(TxtTeethNum.Text);
             this.DialogResult = true;
             this.Close();
         }
 
         //This is NOT the best way of doing this- making a
         //string that can only look like an integer! But it works, so hey!
+        //(Still not dry enough!)
         public string StringIsIntOr_
         {
             get

@@ -75,7 +75,7 @@ namespace SprocketOrderForm
 
         public override string ToString()
         {
-            string strung = ($"; order number{ItemID}, {NumItems} of them with {NumTeeth}");
+            string strung = ($"; order number {ItemID}, {NumItems} of them with {NumTeeth}");
             return strung + ($". It costs ${Price}");
         }
     }

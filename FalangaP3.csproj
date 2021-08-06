@@ -62,6 +62,7 @@
     <Compile Include="SprocketForm.xaml.cs">
       <DependentUpon>SprocketForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SprocketOrder.cs" />
     <Compile Include="SteelSprockets.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

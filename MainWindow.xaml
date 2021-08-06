@@ -75,8 +75,8 @@
                     <ColumnDefinition Width="134*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="BtnAdd" Margin="36,0,36.2,0" Content="Add" Click="BtnAdd_Click" Height="19" VerticalAlignment="Top"/>
-                <Button x:Name="BtnRemove" Margin="36,   0" Grid.Column="1" Content="Remove"/>
+                <Button x:Name="BtnAdd" Margin="36,0,36.2,0.2" Content="Add" Click="BtnAdd_Click"/>
+                <Button x:Name="BtnRemove" Margin="36,   0" Grid.Column="1" Content="Remove" Click="BtnRemove_Click"/>
                 <Button x:Name="BtnUpdate" Margin="36,   0" Grid.Column="2" Content="Update"/>
             </Grid>
 

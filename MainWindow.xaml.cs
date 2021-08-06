@@ -20,9 +20,12 @@ namespace SprocketOrderForm
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Sprocket> sprockets;
         public MainWindow()
         {
             InitializeComponent();
+            sprockets = new List<Sprocket>();
+            LstItems.ItemsSource = sprockets;
         }
 
         private void ChkPickup_Checked(object sender, RoutedEventArgs e)
@@ -45,8 +48,18 @@ namespace SprocketOrderForm
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            SprocketForm sfDebris = new SprocketForm();
-            sfDebris.Show();
+            //Sprocket sprack = null;
+            SprocketForm formal = new SprocketForm();
+            formal.ShowDialog();
+            Sprocket sprack = formal.Sprocked;
+            sprockets.Add(sprack);
+            LstItems.Items.Refresh();
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult yesOrNo= MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?","You sure?",MessageBoxButton.YesNo);
+            if (yesOrNo==DialogResult)
         }
     }
 }
