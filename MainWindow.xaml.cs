@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -60,9 +61,9 @@ namespace SprocketOrderForm
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult yesOrNo= System.Windows.Forms.MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?",
-                "You sure?", (MessageBoxButtons)MessageBoxButton.YesNo);
-            if (yesOrNo == System.Windows.Forms.DialogResult.Yes)
+            var yesOrNo= MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?",
+                "You sure?", MessageBoxButton.YesNo);
+            if (yesOrNo == MessageBoxResult.Yes)
             {
                 int ix = LstItems.SelectedIndex;
                 sprockets.RemoveAt(ix);
@@ -72,7 +73,7 @@ namespace SprocketOrderForm
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.SaveFileDialog saving = new Microsoft.Win32.SaveFileDialog();
+            SaveFileDialog saving = new SaveFileDialog();
             saving.DefaultExt = ".txt";
             saving.Filter = "Txt File|*.txt";
 

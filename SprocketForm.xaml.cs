@@ -19,8 +19,10 @@ namespace SprocketOrderForm
     /// </summary>
     public partial class SprocketForm : Window
     {
+        //THIS is this Window's Sprocket
         public Sprocket Sprocked;
         string shdBeInt;
+
 
         
         public SprocketForm() //: this(new SteelSprockets())
@@ -72,7 +74,7 @@ namespace SprocketOrderForm
 
         //This is NOT the best way of doing this- making a
         //string that can only look like an integer! But it works, so hey!
-        //(Still not dry enough!)
+        //(Still not DRY enough!)
         public string StringIsIntOr_
         {
             get
