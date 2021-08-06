@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,7 +72,37 @@ namespace SprocketOrderForm
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            Microsoft.Win32.SaveFileDialog saving = new Microsoft.Win32.SaveFileDialog();
+            saving.DefaultExt = ".txt";
+            saving.Filter = "Txt File|*.txt";
 
+            bool? something = saving.ShowDialog();
+            if (something==true)
+            {
+                Adress ix = new Adress();
+                if (ChkPickup.IsChecked==false)
+                {
+                    
+                    ix.City = TxtCity.Text;
+                    ix.State = TxtState.Text;
+                    ix.Street = TxtStreet.Text;
+                    ix.ZipCode = TxtZipCode.Text;
+
+                }
+                SprocketOrder ordering=
+                    new SprocketOrder(ix, TxtCustomer1.Text, sprockets,
+                    (bool)ChkPickup.IsChecked);
+
+                string stringing = ordering.ToString();
+                
+                stringing += $"\n\n";
+                foreach (Sprocket sprocket in sprockets)
+                {
+                    stringing += $"{sprocket.ToString()}\n";
+                }
+
+                File.WriteAllText(saving.FileName, stringing);
+            }
         }
     }
 }

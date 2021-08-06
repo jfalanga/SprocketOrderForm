@@ -72,14 +72,14 @@ namespace SprocketOrderForm
             items = new List<Sprocket>();
         }
         
-        public SprocketOrder(Adress adress, string name, List<Sprocket> sprockets, bool isLocal)
+        public SprocketOrder(Adress adress, string customerName, List<Sprocket> sprockets, bool isLocal)
         {
-            if (isLocal)
+            if (!isLocal)
             {
                 Adress = adress;
             }
             
-            CustomerName = name;
+            this.CustomerName = customerName;
             Items = sprockets;
 
         }
