@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -58,8 +59,19 @@ namespace SprocketOrderForm
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult yesOrNo= MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?","You sure?",MessageBoxButton.YesNo);
-            if (yesOrNo==DialogResult)
+            DialogResult yesOrNo= System.Windows.Forms.MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?",
+                "You sure?", (MessageBoxButtons)MessageBoxButton.YesNo);
+            if (yesOrNo == System.Windows.Forms.DialogResult.Yes)
+            {
+                int ix = LstItems.SelectedIndex;
+                sprockets.RemoveAt(ix);
+                LstItems.Items.Refresh();
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,7 @@
             <ComboBox x:Name="CmbType" Grid.Row="1" Grid.Column="1"  Margin="0 0 0 4" Padding="2" Grid.ColumnSpan="2" >
                 <ListBoxItem Content="Steel Sprockets" />
                 <ListBoxItem Content="Aluminum Sprockets"/>
-                <ListBoxItem Content="Plastic Sprockts"/>
+                <ListBoxItem Content="Plastic Sprockets"/>
             </ComboBox>
             <Label Grid.Row="2" Grid.Column="0" Content="Number of teeth"/>
             <TextBox x:Name="TxtTeethNum" Grid.Row="2" Grid.Column="1" Margin="0 0 0 4" Padding="2" TextChanged="TxtTeethNum_TextChanged"/>
