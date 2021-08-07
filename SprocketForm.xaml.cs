@@ -38,12 +38,13 @@ namespace SprocketOrderForm
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            //Sprocket Sprocked;
+            //Sprocket Sprocked; --keeping this here to show how I was
+            //struggling with how to deal with how to get sprocket back to MainWindow!
             if (TxtID.Text == "") TxtID.Text = "0";
             switch (CmbType.Text)
             {
                 case "":
-                    MessageBox.Show("Please enter something in Item Type");
+                    MessageBox.Show("Please select something in Item Type");
                     return;
                 case "Steel Sprockets":
                     Sprocked = new SteelSprockets(Int32.Parse(TxtID.Text),0,0);
@@ -58,6 +59,8 @@ namespace SprocketOrderForm
                     throw new Exception("Combobox for Item Type has unexpected value!");
             }
             //this.Sprocked = Sprocked;
+
+            //just make all those empty textboxes parsable!
             if (TxtNumOfStuff.Text == "")
             {
                 TxtNumOfStuff.Text = "0";

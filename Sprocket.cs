@@ -33,7 +33,8 @@ namespace SprocketOrderForm
             }
             set
             {
-                if (value>=0)
+                //I don't think you can have a NEGATIVE number of items!
+                if (value>0)
                 {
                     numItems = value;
                 }
@@ -68,14 +69,17 @@ namespace SprocketOrderForm
         }
         
         //I didn't see a way- at least not a very GOOD way- of making Price
-        //a read-only property...
+        //a read-only property... (The only way you COULD do it would be
+        //to make a field variable that was proected, rather than private...
+        //that's not good STYLE!)
         public decimal Price {  get; protected set; }
 
         protected abstract void Calc();
 
         public override string ToString()
         {
-            string strung = ($"; order number {ItemID}, {NumItems} of them with {NumTeeth}");
+            //I add the Material Type in the subclasses
+            string strung = ($"; order number {ItemID}, {NumItems} of them with {NumTeeth} teeth each");
             return strung + ($". It costs ${Price}");
         }
 

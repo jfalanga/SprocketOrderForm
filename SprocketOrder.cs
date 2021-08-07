@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SprocketOrderForm
 {
+    //NFCM
     class SprocketOrder
     {
         private List<Sprocket> items;
@@ -31,7 +32,8 @@ namespace SprocketOrderForm
         {
             get
             {
-                Calc();
+                Calc();     //This will garantee that I get
+                            //the right total price!
                 return priceInTotal;
             }
             private set
@@ -57,11 +59,7 @@ namespace SprocketOrderForm
             items.Add(spr);
         }
 
-        
 
-        //I wanted to include a remove for particular sprockets-
-        //but that'd mean making a Equals(obj)- and that obj is
-        //too complicated for now!
         public void Remove(int ix)
         {
             items.RemoveAt(ix);
@@ -86,6 +84,7 @@ namespace SprocketOrderForm
 
         public override string ToString()
         {
+            //Making a string for whether we have an adress or not
             string adressing;
             if (Adress == null)
             {
@@ -95,6 +94,9 @@ namespace SprocketOrderForm
             {
                 adressing = "Adress: " + Adress.ToString();
             }
+
+            //So happens that we want the complete number of ITEMS- not of orders
+            //(That's each individual sprocket, not each individual Sprocket instance!)
             int sprNum = 0;
             foreach (Sprocket item in items)
             {

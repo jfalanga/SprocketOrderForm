@@ -61,6 +61,11 @@ namespace SprocketOrderForm
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
+            if (LstItems.SelectedIndex==-1)
+            {
+                MessageBox.Show("You can't remove something until you've selected an item!");
+                return;
+            }
             var yesOrNo= MessageBox.Show($"Are you sure you really want to remove the following item:\n{LstItems.SelectedItem.ToString()}?",
                 "You sure?", MessageBoxButton.YesNo);
             if (yesOrNo == MessageBoxResult.Yes)
@@ -77,19 +82,20 @@ namespace SprocketOrderForm
             saving.DefaultExt = ".txt";
             saving.Filter = "Txt File|*.txt";
 
-            bool? something = saving.ShowDialog();
-            if (something==true)
+            bool? dialoging = saving.ShowDialog();
+            if (dialoging==true)
             {
                 Adress ix = new Adress();
                 if (ChkPickup.IsChecked==false)
                 {
-                    
+                    //might as well put it all there!
                     ix.City = TxtCity.Text;
                     ix.State = TxtState.Text;
                     ix.Street = TxtStreet.Text;
                     ix.ZipCode = TxtZipCode.Text;
 
                 }
+
                 SprocketOrder ordering=
                     new SprocketOrder(ix, TxtCustomer1.Text, sprockets,
                     (bool)ChkPickup.IsChecked);
